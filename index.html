@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+        var img1=document.createElement("img");
+        img1.src="images/pacman1.jpeg";
+        img1.style.height="100px";
+        img1.style.width="100px";
+        img1.style.position="absolute"
+        img1.style.left="0px";
+         
+        var img2=document.createElement("img");
+        img2.src="images/pacman2.jpeg";
+        img2.style.height="100px";
+        img2.style.width="100px";
+        img2.style.position="absolute"
+        img2.style.left="0px";
+        
+        var img3=document.createElement("img");
+        img3.src="images/pacman3.jpeg";
+        img3.style.height="100px";
+        img3.style.width="100px";
+        img3.style.position="absolute"
+        img3.style.right="0px";
+
+        var img4=document.createElement("img");
+        img4.src="images/pacman4.jpeg";
+        img4.style.height="100px";
+        img4.style.width="100px";
+        img4.style.position="absolute"
+        img4.style.right="0px";
+
+        var frontimg=[img1,img2];
+         var backimg=[img4,img3];
+         var max=1000;
+         var vel=30;
+         var pos1=0;
+         var pos2=0;
+         var i=0;
+         var j=0;
+         function move(){ 
+          if(pos1<=max){
+           img3.style.visibility="hidden"
+           img4.style.visibility="hidden"
+            pos1=pos1+vel;
+           
+            if(i==0){
+           img1.style.visibility="visible";
+           img2.style.visibility="hidden";
+         }
+         else{
+           img2.style.visibility="visible";
+           img1.style.visibility="hidden";
+         }
+
+           frontimg[i].style.marginLeft=pos1+"px";
+           document.body.appendChild(frontimg[i]);
+           if(i==0){
+             i=1;
+           }
+           else if(i==1){
+             i=0;
+           }
+         }
+         else if(pos2<=max){
+           img1.style.visibility="hidden"
+           img2.style.visibility="hidden"
+
+          pos2=pos2+vel;
+         if(j==0){
+         img3.style.visibility="visible";
+         img4.style.visibility="hidden";
+         }
+         else{
+         img4.style.visibility="visible";
+         img3.style.visibility="hidden";
+         }
+         backimg[j].style.right=pos2+"px";
+         document.body.appendChild(backimg[j]);
+         if(j==0){
+         j=1;
+         }
+         else if(j==1){
+         j=0;
+         }
+         }
+         else{
+         img1.style.style="hidden";
+         img3.style.right="0px";
+          pos1=0; 
+          pos2=0;
+           }}
+         setInterval(move,300)
+          </script>
+     </body>
+</html>
